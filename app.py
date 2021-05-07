@@ -454,20 +454,33 @@ def main():
     else:
         st.header("Predictions")
 
+        # def xgb_page_builder(data):
+        #     st.sidebar.header('Heart Attack Predictions')
+        #     st.sidebar.markdown('You can tune the parameters by siding')
+        #     st.sidebar.text_input("What's your age?")
+        #     max_depth = st.sidebar.slider(
+        #         'Select max_depth (default = 30)', 3, 30, 30)
+        #     eta = st.sidebar.slider(
+        #         'Select learning rate (divided by 10) (default = 0.1)', 0.01, 1.0, 1.0)
+        #     min_child_weight = st.sidebar.slider(
+        #         'Select min_child_weight (default = 0.3)', 0.1, 3.0, 0.3)
+        #     subsample = st.sidebar.slider(
+        #         'Select subsample (default = 0.75)', 0.5, 1.0, 0.75)
+        #     colsample_bylevel = st.sidebar.slider(
+        #         'Select colsample_bylevel (default = 0.5)', 0.5, 1.0, 0.5)
+
+        # st.write(xgb_page_builder(data))
+
         def xgb_page_builder(data):
             st.sidebar.header('Heart Attack Predictions')
             st.sidebar.markdown('You can tune the parameters by siding')
             st.sidebar.text_input("What's your age?")
-            max_depth = st.sidebar.slider(
-                'Select max_depth (default = 30)', 3, 30, 30)
-            eta = st.sidebar.slider(
-                'Select learning rate (divided by 10) (default = 0.1)', 0.01, 1.0, 1.0)
-            min_child_weight = st.sidebar.slider(
-                'Select min_child_weight (default = 0.3)', 0.1, 3.0, 0.3)
-            subsample = st.sidebar.slider(
-                'Select subsample (default = 0.75)', 0.5, 1.0, 0.75)
-            colsample_bylevel = st.sidebar.slider(
-                'Select colsample_bylevel (default = 0.5)', 0.5, 1.0, 0.5)
+            cp = st.sidebar.slider(
+                'Select max_depth (default = 30)', 0, 1, 2)
+            thalach = st.sidebar.slider(
+                'Select learning rate (divided by 10) (default = 0.1)', min_value=50, max_value=300, value=None, step=5)
+            slope = st.sidebar.slider(
+                'Select min_child_weight (default = 0.3)', 1, 2, 3)
 
         st.write(xgb_page_builder(data))
 
@@ -509,6 +522,21 @@ def main():
 #                       vmin=0, vmax=100, color='#5fba7d')
         set_config(display='diagram')
         st.write(load_clf)
+        # a = [
+        #     54,
+        #     1,
+        #     cp,
+        #     131,
+        #     246,
+        #     0.148,
+        #     5280,
+        #     thalch,
+        #     0.326,
+        #     1.0396,
+        #     slope,
+        #     0.7293,
+        #     2.313,
+        # ]
 
 # data = load_data("clean")
 # the all graphic functions
